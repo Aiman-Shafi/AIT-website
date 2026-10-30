@@ -1,0 +1,20 @@
+/* Map accent and accessible native project picker */
+.map-section{--map-accent:#9A6B3F;--map-accent-dark:#7E5530}
+.map-pin.active span,.map-pin.active:hover span{background:var(--map-accent);box-shadow:0 0 0 7px #9a6b3f26,0 2px 9px #64442530;transform:scale(1.3)}
+.map-pin.active:before{content:"";position:absolute;inset:2px;border:1px solid #9a6b3f80;border-radius:50%;animation:map-halo 1.5s ease-out 2;pointer-events:none}
+.map-pin.active:after{content:attr(data-city);position:absolute;bottom:calc(100% + 8px);left:50%;transform:translateX(-50%);background:#fff;color:#7E5530;border:1px solid #9a6b3f38;border-radius:8px;padding:7px 10px;box-shadow:0 4px 18px #1c1b190d;white-space:nowrap;font-size:10px;pointer-events:none}
+@keyframes map-halo{0%{scale:.6;opacity:.8}100%{scale:2.1;opacity:0}}
+.project-picker{position:relative;border-radius:8px;background:#fff;border:1px solid #d5d8d8;box-shadow:0 3px 12px #1c1b1905;transition:border-color .25s,box-shadow .25s}
+.project-picker:hover{border-color:#9a6b3f80}
+.project-picker:focus-within{outline:2px solid #9a6b3f;outline-offset:3px}
+.project-picker-display{min-height:72px;padding:15px 50px 15px 17px;display:flex;flex-direction:column;justify-content:center;gap:6px;pointer-events:none}
+.project-picker-display strong{font-size:14px;line-height:1.35;font-weight:400;color:#1c1b19}
+.project-picker-display small{font-size:11px;color:#6B665E;line-height:1.4}
+.project-picker-chevron{position:absolute;right:18px;top:29px;width:9px;height:9px;border-bottom:1.5px solid #7E5530;border-right:1.5px solid #7E5530;transform:rotate(45deg);pointer-events:none}
+.map-detail .project-picker select{position:absolute;inset:0;width:100%;height:100%;opacity:0;cursor:pointer;font-size:16px;margin:0;padding:0}
+.map-intro .map-canvas>svg{animation:map-enter 1.2s cubic-bezier(.22,1,.36,1) both}
+.map-intro .map-pin{animation:map-pin-enter .65s cubic-bezier(.22,1,.36,1) both;animation-delay:var(--pin-delay,.4s)}
+@keyframes map-enter{from{opacity:0;translate:0 18px;scale:.98}to{opacity:1;translate:0 0;scale:1}}
+@keyframes map-pin-enter{from{opacity:0;scale:.5}to{opacity:1;scale:1}}
+@media(max-width:760px){.map-pin.active:after{font-size:9px;padding:6px 8px}.project-picker-display{min-height:76px}.project-picker-chevron{top:31px}}
+@media(prefers-reduced-motion:reduce){.map-intro .map-canvas>svg,.map-intro .map-pin,.map-pin.active:before{animation:none!important}.project-picker{transition:none}}
